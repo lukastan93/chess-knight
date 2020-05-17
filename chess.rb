@@ -14,14 +14,21 @@ class ChessBoard
             seven: [-1, 2],
             eight: [-1, -2]
         }
-        @knight_pos = [0,0]
+        #track visited spaces in an array in order to check if the knight has visited the destination space.
         @visited_spaces = []
+
+        #track nodes in order to climb back up from the destination node and print the trajectory.
         @visited_nodes = []
+
+        #storage queue for breadth-first tree generation.
         @queue = []
         @moves = 0
+
+        #array to store trajectory.
         @pathing = []
     end
 
+    #Creates a chess board to be used as a check for move legality
     def create_board
         @board = []
         0.upto(7) {|i|
@@ -32,6 +39,7 @@ class ChessBoard
         return @board
     end
 
+    #initialize the knight's moves and check visited spaces against destination space.
     def knight_moves(start, destination, queue = @queue)
         if (start == destination)
             p "Input a different start and destination please."
@@ -59,6 +67,7 @@ class ChessBoard
         end
     end
 
+    #generates legal spaces for the knight to visit from its current position.
     def generate_spaces(arr)
         @move_coordinates.each {|key, value|
             space_x = value[0] + arr[0].x
