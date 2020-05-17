@@ -61,7 +61,7 @@ class ChessBoard
                         @pathing.unshift([node.x, node.y])
                     end
                 end
-                p "Knight reaches #{destination} in #{moves} moves:"
+                puts "Knight reaches #{destination} in #{moves} moves:"
                 p @pathing
             end
         end
